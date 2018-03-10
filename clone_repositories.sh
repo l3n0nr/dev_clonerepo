@@ -10,7 +10,14 @@
 # arrays of repositories
 SERVER="http://www.github.com/lenonr/"
 REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web)
+GIT=".git"
 LOCAL="/home/lenonr/Github/"
+
+# Structure
+# Step's
+# 0 - Find directories
+# 1 - Show directories
+# 2 - Clone directories not found's
 
 #############################
 #
@@ -21,20 +28,21 @@ printf "############################\n"
 
 # # walk to the array
 for (( i = 0; i <= ${#REPOS[@]}; i++ )); do	
-	# verify local repo disc
+	# verify local repo disk
 	if [[ $LOCAL${REPOS[$i]} != $LOCAL ]]; then
 		# echo $LOCAL${REPOS[$i]}
 
 		# verify local repo
-		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	
-		  	# echo "########## LISTA DE ARQUIVOS ##########" 
+		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	 
 		  	echo "[+] - Found:" $LOCAL${REPOS[$i]}
 		else
+			printf "############################\n"
 			echo "[-] - Not found": $LOCAL${REPOS[$i]}
+			printf "############################\n"
+			printf "Download now!\n"			
+			git clone $SERVER${REPOS[$i]}$GIT
 		fi
 	fi
-
-	# git clone $SERVER${REPOS[$i]}
 done	
 
 printf "############################\n"
