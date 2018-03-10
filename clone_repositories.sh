@@ -50,6 +50,8 @@ LOCAL_HOME=($HOME)
 LOCAL="$LOCAL_HOME/Github/"
 REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
 GIT=".git"
+REPO_FOUNDS=0
+REPO_NOTFOUNDS=0
 #
 # Structure
 # Step's
@@ -67,11 +69,13 @@ GIT=".git"
 clear
 printf "############################\n"
 
-# create folder not found
 if [ -e "$LOCAL" ]; then 	  	 
 	printf ""
 else
+	# create folder not found
 	mkdir $LOCAL_HOME/Github
+
+	cd $LOCAL_HOME/Github
 fi
 
 # # walk to the array
@@ -80,16 +84,25 @@ for (( i = 0; i <= ${#REPOS[@]}; i++ )); do
 	if [[ $LOCAL${REPOS[$i]} != $LOCAL ]]; then
 		# verify local repo
 		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	 
+			printf ""
 		  	echo "[+] - Found:" $LOCAL${REPOS[$i]}
+
+		  	REPO_FOUNDS=$(($REPO_FOUNDS + 1));        
 		else
-			printf "############################\n"
+			printf ""
 			echo "[-] - Not found": $LOCAL${REPOS[$i]}
 			printf "Download now!\n"			
 			git clone $SERVER${REPOS[$i]}$GIT
+
+			REPO_NOTFOUNDS=$(($REPO_NOTFOUNDS + 1));        
 		fi
 	fi
 done	
 
+# static script
+printf "##################\n"
+printf "Repo founds: $REPO_FOUNDS\n"
+printf "Repo not founds: $REPO_NOTFOUNDS\n"
 printf "############################\n"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
