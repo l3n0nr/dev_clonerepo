@@ -24,7 +24,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.10.0.0.0]   #
+# Script version:           		[0.0.12.0.0.0]   #
 # Date create script:    	  		[09/03/18]       #
 # Last modification script: 		[10/03/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
@@ -48,7 +48,7 @@
 SERVER="http://www.github.com/lenonr/"
 LOCAL_HOME=($HOME)
 LOCAL="$LOCAL_HOME/Github/"
-REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web)
+REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
 GIT=".git"
 #
 # Structure
@@ -62,7 +62,7 @@ GIT=".git"
 # BODY
 #
 ### Instructions
-# Run script in you home user folder
+# Run script in you home user folder and take it your coffee!! ;-)
 
 clear
 printf "############################\n"
