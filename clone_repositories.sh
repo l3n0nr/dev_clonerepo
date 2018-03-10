@@ -84,7 +84,6 @@ for (( i = 0; i <= ${#REPOS[@]}; i++ )); do
 		else
 			printf "############################\n"
 			echo "[-] - Not found": $LOCAL${REPOS[$i]}
-			printf "############################\n"
 			printf "Download now!\n"			
 			git clone $SERVER${REPOS[$i]}$GIT
 		fi
