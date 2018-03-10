@@ -17,7 +17,6 @@ LOCAL="/home/lenonr/Github/"
 # BODY
 #
 clear
-# printf "Clone repositories available\n"
 printf "############################\n"
 
 # # walk to the array
@@ -26,23 +25,19 @@ for (( i = 0; i <= ${#REPOS[@]}; i++ )); do
 	if [[ $LOCAL${REPOS[$i]} != $LOCAL ]]; then
 		# echo $LOCAL${REPOS[$i]}
 
-		# verificando se arquivo existe
+		# verify local repo
 		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	
 		  	# echo "########## LISTA DE ARQUIVOS ##########" 
-		  	# cd $LOCAL${REPOS[$i]}
-		  	# ls
+		  	echo "[+] - Found:" $LOCAL${REPOS[$i]}
 		else
-			echo "Diretorio '$LOCAL${REPOS[$i]}' nao encontrado"
+			echo "[-] - Not found": $LOCAL${REPOS[$i]}
 		fi
 	fi
 
-	# if [ -e "$LOCAL$REPOS" ]; then
-
-	# fi
-
-	# echo "$i"
 	# git clone $SERVER${REPOS[$i]}
 done	
+
+printf "############################\n"
 
 #############################
 #
