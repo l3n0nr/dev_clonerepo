@@ -5,10 +5,14 @@
 # # # # # # # # # # # # # #
 #   	REFERENCES  	  #
 # # # # # # # # # # # # # #
+# Working with 'Arrays' in BASH Scripting
 #	<http://www.yourownlinux.com/2013/10/working-with-arrays-in-bash-scripting.html>
 #
+# Unix scripts: how to sum numbers up
+# 	<https://www.unixtutorial.org/2009/02/unix-scripts-how-to-sum-numbers-up/>
+#
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
+#
 # # # # # # # # # # # #
 #   DEVELOPMENT BY 	  #
 # # # # # # # # # # # #
@@ -24,7 +28,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.12.0.0.0]   #
+# Script version:           		[0.0.13.0.0.0]   #
 # Date create script:    	  		[09/03/18]       #
 # Last modification script: 		[10/03/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
@@ -57,7 +61,7 @@ REPO_NOTFOUNDS=0
 # Step's
 # 0 - Find directories
 # 1 - Show directories
-# 2 - Clone directories not found's in home user
+# 2 - Clone directories not found's in folder $LOCAL
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
