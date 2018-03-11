@@ -29,9 +29,9 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.13.0.0.0]   #
+# Script version:           		[0.0.15.0.0.0]   #
 # Date create script:    	  		[09/03/18]       #
-# Last modification script: 		[10/03/18]       #
+# Last modification script: 		[11/03/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
 #
 # Subtitle: a.b.c.d.e.f
@@ -78,10 +78,12 @@ if [ -e "$LOCAL" ]; then
 	printf ""
 else
 	# create folder not found
-	mkdir $LOCAL_HOME/Github
-
-	cd $LOCAL_HOME/Github
+	mkdir $LOCAL_HOME/Github	
 fi
+
+# enter folder
+cd $LOCAL_HOME/Github
+# pwd
 
 # # walk to the array
 for (( i = 0; i <= ${#REPOS[@]}; i++ )); do	
