@@ -50,13 +50,13 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # HEAD
 # arrays of repositories
-SERVER="http://www.github.com/lenonr/"
-LOCAL_HOME=($HOME)
-LOCAL="$LOCAL_HOME/Github/"
-REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
-GIT=".git"
-REPO_FOUNDS=0
-REPO_NOTFOUNDS=0
+local SERVER="http://www.github.com/lenonr/"
+local LOCAL_HOME=($HOME)
+local LOCAL="$LOCAL_HOME/Github/"
+local REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
+local GIT=".git"
+local REPO_FOUNDS=0
+local REPO_NOTFOUNDS=0
 #
 # Structure
 # Step's
