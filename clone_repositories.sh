@@ -29,7 +29,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.15.0.0.0]   #
+# Script version:           		[0.0.17.0.0.0]   #
 # Date create script:    	  		[09/03/18]       #
 # Last modification script: 		[11/03/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
@@ -93,6 +93,12 @@ for (( i = 0; i <= ${#REPOS[@]}; i++ )); do
 		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	 
 			printf ""
 		  	echo "[+] - Found:" $LOCAL${REPOS[$i]}
+
+		  	# into folder location
+		  	cd $LOCAL${REPOS[$i]}
+
+		  	# update repositories
+		  	git pull
 
 		  	# REPO_FOUNDS=$(($REPO_FOUNDS + 1));        
 		  	let REPO_FOUNDS++		  	
