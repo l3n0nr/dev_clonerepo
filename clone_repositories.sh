@@ -29,9 +29,9 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.17.0.0.0]   #
+# Script version:           		[0.0.20.0.0.0]   #
 # Date create script:    	  		[09/03/18]       #
-# Last modification script: 		[11/03/18]       #
+# Last modification script: 		[04/04/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
 #
 # Subtitle: a.b.c.d.e.f
@@ -49,14 +49,25 @@
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # HEAD
-# arrays of repositories
-SERVER="http://www.github.com/lenonr/"
-LOCAL_HOME=($HOME)
-LOCAL="$LOCAL_HOME/Github/"
-REPOS=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
+# server of the repositories
+server="http://www.github.com/lenonr/"
+
+# folder user
+local_home=($HOME)
+
+# folder default repositories
+LOCAL="$local_home/Github/"
+
+# list repositories
+repos=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
+
+# final file git
 GIT=".git"
-REPO_FOUNDS=0
-REPO_NOTFOUNDS=0
+
+# counter repositories
+repo_founds=0
+repo_notfounds=0
+
 #
 # Structure
 # Step's
@@ -78,46 +89,62 @@ if [ -e "$LOCAL" ]; then
 	printf ""
 else
 	# create folder not found
-	mkdir $LOCAL_HOME/Github	
+	mkdir $local_home/Github	
 fi
 
 # enter folder
-cd $LOCAL_HOME/Github
+cd $local_home/Github
 # pwd
 
 # # walk to the array
-for (( i = 0; i <= ${#REPOS[@]}; i++ )); do	
+for (( i = 0; i <= ${#repos[@]}; i++ )); do	
 	# verify local repo disk
-	if [[ $LOCAL${REPOS[$i]} != $LOCAL ]]; then
+	if [[ $LOCAL${repos[$i]} != $LOCAL ]]; then
 		# verify local repo
-		if [ -e "$LOCAL${REPOS[$i]}" ]; then 	  	 
+		if [ -e "$LOCAL${repos[$i]}" ]; then 	  	 
 			printf ""
-		  	echo "[+] - Found:" $LOCAL${REPOS[$i]}
+		  	echo "[+] - Found:" $LOCAL${repos[$i]}
 
 		  	# into folder location
-		  	cd $LOCAL${REPOS[$i]}
+		  	cd $LOCAL${repos[$i]}
+
+		  	# show message - pull repositorie
+		  	printf "[*] - Update repositorie, wait.. \n"
 
 		  	# update repositories
 		  	git pull
 
-		  	# REPO_FOUNDS=$(($REPO_FOUNDS + 1));        
-		  	let REPO_FOUNDS++		  	
+		  	# new line
+			printf "\n"
+
+		  	# repo_founds=$(($repo_founds + 1));        
+		  	let repo_founds++		  	
 		else
 			printf ""
-			echo "[-] - Not found": $LOCAL${REPOS[$i]}
-			printf "Download now!\n"			
-			git clone $SERVER${REPOS[$i]}$GIT
+			echo "[-] - Not found": $LOCAL${repos[$i]}
 
-			# REPO_NOTFOUNDS=$(($REPO_NOTFOUNDS + 1));        
-			let REPO_NOTFOUNDS++
+		  	# into folder location
+		  	cd $LOCAL		  	
+
+		  	# clone repositorie
+			git clone $server${repos[$i]}$GIT
+
+			# back folder
+		  	cd ..
+
+		  	# new line
+			printf "\n"
+
+			# repo_notfounds=$(($repo_notfounds + 1));        
+			let repo_notfounds++
 		fi
 	fi
 done	
 
 # static script
 printf "##################\n"
-printf "Repo founds: $REPO_FOUNDS\n"
-printf "Repo not founds: $REPO_NOTFOUNDS\n"
+printf "Repo founds: $repo_founds\n"
+printf "Repo not founds: $repo_notfounds\n"
 printf "############################\n"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
