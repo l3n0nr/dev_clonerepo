@@ -29,16 +29,16 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
-# Script version:           		[0.0.20.0.0.0]   #
+# Script version:           		[0.0.30.1.0.0]   #
 # Date create script:    	  		[09/03/18]       #
-# Last modification script: 		[04/04/18]       #
+# Last modification script: 		[22/05/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
 #
 # Subtitle: a.b.c.d.e.f
 # 	a = alpha[0], beta[1], stable[2], freeze[3];
 #
 # 	b = errors in execution;
-#
+#		I - verificar script sem parametros
 # 	c = interactions of the script;
 #
 # 	d = corrections necessaries;
@@ -96,56 +96,161 @@ fi
 cd $local_home/Github
 # pwd
 
+# func_array()
+# {
+#     # walk to the array
+#     for (( i = 0; i <= ${#repos[@]}; i++ )); do             
+#         # saindo do script
+#         if [[ ${repos[$i]} = "$var_vector" ]]; then
+#             # exec found function
+#             ${repos[$i]}
+
+#             # loop exit
+#             exit 1                
+#         fi
+#     done
+#  }
+
+# main()
+# {
+# 	# # walk to the array
+# 	for (( i = 0; i <= ${#repos[@]}; i++ )); do	
+# 		# verify local repo disk
+# 		if [[ $LOCAL${repos[$i]} != $LOCAL ]]; then
+# 			# verify local repo
+# 			if [ -e "$LOCAL${repos[$i]}" ]; then 	  	 
+# 				printf ""
+# 			  	echo "[+] - Found:" $LOCAL${repos[$i]}
+
+# 			  	# into folder location
+# 			  	cd $LOCAL${repos[$i]}
+
+# 			  	# show message - pull repositorie
+# 			  	printf "[*] - Update repositorie, wait.. \n"
+
+# 			  	# update repositories
+# 			  	git pull
+
+# 			  	# new line
+# 				printf "\n"
+
+# 			  	# repo_founds=$(($repo_founds + 1));        
+# 			  	let repo_founds++		  	
+# 			else
+# 				printf ""
+# 				echo "[-] - Not found": $LOCAL${repos[$i]}
+
+# 			  	# into folder location
+# 			  	cd $LOCAL		  	
+
+# 			  	# clone repositorie
+# 				git clone $server${repos[$i]}$GIT
+
+# 				# back folder
+# 			  	cd ..
+
+# 			  	# new line
+# 				printf "\n"
+
+# 				# repo_notfounds=$(($repo_notfounds + 1));        
+# 				let repo_notfounds++
+# 			fi
+# 		fi
+# 	done	
+# }
+
 # # walk to the array
 for (( i = 0; i <= ${#repos[@]}; i++ )); do	
-	# verify local repo disk
-	if [[ $LOCAL${repos[$i]} != $LOCAL ]]; then
-		# verify local repo
-		if [ -e "$LOCAL${repos[$i]}" ]; then 	  	 
-			printf ""
-		  	echo "[+] - Found:" $LOCAL${repos[$i]}
+	if [[ ${repos[$i]} = "$1" ]]; then
+		# verify local repo disk
+		if [[ $LOCAL${repos[$i]} != $LOCAL ]]; then							
+			# verify local repo
+			if [[ -e "$LOCAL${repos[$i]}" ]]; then 	  	 
+				printf ""
+			  	echo "[+] - Found:" $LOCAL${repos[$i]}
 
-		  	# into folder location
-		  	cd $LOCAL${repos[$i]}
+			  	# into folder location
+			  	cd $LOCAL${repos[$i]}
 
-		  	# show message - pull repositorie
-		  	printf "[*] - Update repositorie, wait.. \n"
+			  	# show message - pull repositorie
+			  	printf "[*] - Update repositorie, wait.. \n"
 
-		  	# update repositories
-		  	git pull
+			  	# update repositories
+			  	git pull
 
-		  	# new line
-			printf "\n"
+			  	# new line
+				printf "\n"
 
-		  	# repo_founds=$(($repo_founds + 1));        
-		  	let repo_founds++		  	
-		else
-			printf ""
-			echo "[-] - Not found": $LOCAL${repos[$i]}
+			  	# repo_founds=$(($repo_founds + 1));        
+			  	let repo_founds++		  	
+			else
+				printf ""
+				echo "[-] - Not found": $LOCAL${repos[$i]}
 
-		  	# into folder location
-		  	cd $LOCAL		  	
+			  	# into folder location
+			  	cd $LOCAL		  	
 
-		  	# clone repositorie
-			git clone $server${repos[$i]}$GIT
+			  	# clone repositorie
+				git clone $server${repos[$i]}$GIT
 
-			# back folder
-		  	cd ..
+				# back folder
+			  	cd ..
 
-		  	# new line
-			printf "\n"
+			  	# new line
+				printf "\n"
 
-			# repo_notfounds=$(($repo_notfounds + 1));        
-			let repo_notfounds++
+				# repo_notfounds=$(($repo_notfounds + 1));        
+				let repo_notfounds++
+			fi
+		else				
+			# verify local repo
+			if [[ -e "$LOCAL${repos[$i]}" ]]; then 	  	 
+				printf ""
+			  	echo "[+] - Found:" $LOCAL${repos[$i]}
+
+			  	# into folder location
+			  	cd $LOCAL${repos[$i]}
+
+			  	# show message - pull repositorie
+			  	printf "[*] - Update repositorie, wait.. \n"
+
+			  	# update repositories
+			  	git pull
+
+			  	# new line
+				printf "\n"
+
+			  	# repo_founds=$(($repo_founds + 1));        
+			  	let repo_founds++		  	
+			else
+				printf ""
+				echo "[-] - Not found": $LOCAL${repos[$i]}
+
+			  	# into folder location
+			  	cd $LOCAL		  	
+
+			  	# clone repositorie
+				git clone $server${repos[$i]}$GIT
+
+				# back folder
+			  	cd ..
+
+			  	# new line
+				printf "\n"
+
+				# repo_notfounds=$(($repo_notfounds + 1));        
+				let repo_notfounds++
+			fi					
 		fi
+		break;
 	fi
-done	
+done
 
-# static script
-printf "##################\n"
-printf "Repo founds: $repo_founds\n"
-printf "Repo not founds: $repo_notfounds\n"
-printf "############################\n"
+# # static script
+# printf "##################\n"
+# printf "Repo founds: $repo_founds\n"
+# printf "Repo not founds: $repo_notfounds\n"
+# printf "############################\n"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #
 # FOOTER
