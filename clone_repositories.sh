@@ -31,7 +31,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
 # Script version:           		[0.0.30.1.0.0]   #
 # Date create script:    	  		[09/03/18]       #
-# Last modification script: 		[22/05/18]       #
+# Last modification script: 		[21/05/18]       #
 # # # # # # # # # # # # # # # # # # # # # # # ## # # #
 #
 # Subtitle: a.b.c.d.e.f
@@ -59,7 +59,7 @@ local_home=($HOME)
 LOCAL="$local_home/Github/"
 
 # list repositories
-repos=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo)
+repos=(dev_xfce dev_scripts dev_ksp dev_sysadmin dev_web dev_clonerepo dev_docker)
 
 # final file git
 GIT=".git"
