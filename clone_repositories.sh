@@ -50,7 +50,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # HEAD
 # server of the repositories
-server="http://www.github.com/lenonr/"
+server="http://www.github.com/l3n0nr/"
 
 # folder user
 local_home=($HOME)
